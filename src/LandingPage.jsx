@@ -10,21 +10,21 @@ const projects = [
     category: "Environment",
     title: "Renewable Energy Access",
     description: "Building affordable clean energy solutions for rural communities.",
-    contributors: "12 contributors",
+    contributors: "0 contributors",
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1000&q=85"
   },
   {
     category: "Education",
     title: "Open Learning for All",
     description: "Creating free, high-quality learning resources for underserved regions.",
-    contributors: "8 contributors",
+    contributors: "0 contributors",
     image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=85"
   },
   {
     category: "Health",
     title: "Low-Cost Medical Devices",
     description: "Designing accessible healthcare tools for emerging markets.",
-    contributors: "15 contributors",
+    contributors: "0 contributors",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85"
   }
 ];
@@ -1745,9 +1745,7 @@ export default function LandingPage() {
                   />
 
                   <blockquote className="testimonial-quote">
-                    “BuildOne helped me find the right co-founder for my
-                    climate project. The process was simple and incredibly
-                    effective.”
+                    “BuildOne Idea is Best I support the Team BuildOne for future Development also”
                   </blockquote>
                 </div>
 
@@ -1772,9 +1770,7 @@ export default function LandingPage() {
                   />
 
                   <blockquote className="testimonial-quote">
-                    “We found skilled contributors and resources we
-                    couldn't find anywhere else. It's more than a platform
-                    — it's a community.”
+                    “This Platform i hope will help to connect people and their ideas to make a better world.”
                   </blockquote>
                 </div>
 

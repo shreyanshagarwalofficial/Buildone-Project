@@ -1,19 +1,26 @@
 ﻿import { createClient } from "@supabase/supabase-js";
 
-const url = import.meta.env.VITE_SUPABASE_URL;
-const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.trim();
+const supabasePublishableKey =
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim();
 
-console.log("VITE_SUPABASE_URL:", url ? "FOUND" : "MISSING");
-console.log("VITE_SUPABASE_PUBLISHABLE_KEY:", key ? "FOUND" : "MISSING");
-
-if (!url || !key) {
-  throw new Error("Supabase environment variables are missing.");
+if (!supabaseUrl) {
+  throw new Error("VITE_SUPABASE_URL is missing.");
 }
 
-export const supabase = createClient(url, key, {
-  auth: {
-    persistSession: true,
-    autoRefreshToken: true,
-    detectSessionInUrl: true
+if (!supabasePublishableKey) {
+  throw new Error("VITE_SUPABASE_PUBLISHABLE_KEY is missing.");
+}
+
+export const supabase = createClient(
+  supabaseUrl,
+  supabasePublishableKey,
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+      flowType: "pkce"
+    }
   }
-});
+);

@@ -1,10 +1,18 @@
 ﻿import { lazy, Suspense, Component } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes
+} from "react-router-dom";
 
 const LandingPage = lazy(() => import("./LandingPage.jsx"));
 const LoginPage = lazy(() => import("./pages/auth/LoginPage.jsx"));
 const RegisterPage = lazy(() => import("./pages/auth/RegisterPage.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+const ContactPage = lazy(() => import("./pages/ContactPage.jsx"));
+const CareersPage = lazy(() => import("./pages/CareersPage.jsx"));
+const AdminPortal = lazy(() => import("./pages/admin/AdminPortal.jsx"));
 
 class AppErrorBoundary extends Component {
   state = { error: null };
@@ -73,10 +81,24 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/contact" element={<ContactPage />} />
+
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/careers/:slug" element={<CareersPage />} />
+
+            <Route
+              path="/BuildoneTeam/*"
+              element={<AdminPortal />}
+            />
+
+            <Route
+              path="*"
+              element={<Navigate to="/" replace />}
+            />
           </Routes>
         </Suspense>
       </BrowserRouter>
     </AppErrorBoundary>
   );
 }
+
