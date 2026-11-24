@@ -18,6 +18,9 @@ const DiscoverPage = lazy(
   () => import("./pages/DiscoverPage.jsx")
 );
 const MessagesPage = lazy(() => import("./pages/MessagesPage.jsx"));
+const ProfessionalProfilePage = lazy(
+  () => import("./pages/ProfessionalProfilePage.jsx")
+);
 const NetworkPage = lazy(() => import("./pages/NetworkPage.jsx"));
 
 const PublicProfilePage = lazy(
@@ -73,6 +76,15 @@ export default function App() {
     <Route path="/AspiraTeam" element={<Navigate to="/AspiraTeam/dashboard" replace />} />
     <Route path="/AspiraTeam/*" element={<AdminPortal />} />
     <Route path="/admin-projects" element={<AdminProjectsPage />} />
+    <Route
+  path="/profile"
+  element={<ProfessionalProfilePage />}
+/>
+
+<Route
+  path="/profile/:userId"
+  element={<ProfessionalProfilePage />}
+/>
     <Route path="*" element={<Navigate to="/" replace />} />
     <Route
   path="/network"
