@@ -88,7 +88,7 @@ function Logo() {
     <span className="contact-logo">
       <img
         src={LOGO_URL}
-        alt="BuildOne"
+        alt="Aspira"
         className="contact-logo-image"
       />
     </span>
@@ -143,11 +143,11 @@ export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    document.title = "Contact BuildOne";
+    document.title = "Contact Aspira";
 
     setMeta(
       "description",
-      "Contact BuildOne for questions, partnerships, community support, opportunities and platform enquiries."
+      "Contact Aspira for questions, partnerships, community support, opportunities and platform enquiries."
     );
 
     setMeta("robots", "index,follow");
@@ -247,7 +247,7 @@ export default function ContactPage() {
     }
 
     const lastSubmission = Number(
-      localStorage.getItem("buildone_contact_last_submission") || "0"
+      localStorage.getItem("Aspira_contact_last_submission") || "0"
     );
 
     if (Date.now() - lastSubmission < 15000) {
@@ -279,7 +279,7 @@ export default function ContactPage() {
       });
 
       localStorage.setItem(
-        "buildone_contact_last_submission",
+        "Aspira_contact_last_submission",
         String(Date.now())
       );
 
@@ -924,7 +924,7 @@ export default function ContactPage() {
 
       <header className="contact-header">
         <div className="contact-container contact-header-inner">
-          <Link to="/" aria-label="BuildOne home">
+          <Link to="/" aria-label="Aspira home">
             <Logo />
           </Link>
 
@@ -947,7 +947,7 @@ export default function ContactPage() {
               <input
                 type="search"
                 placeholder="Search projects..."
-                aria-label="Search BuildOne"
+                aria-label="Search Aspira"
               />
             </label>
 
@@ -979,7 +979,7 @@ export default function ContactPage() {
 
             <p className="contact-description">
               Have questions, ideas, or feedback? We would like to
-              hear from you. Send a message and the BuildOne team
+              hear from you. Send a message and the Aspira team
               will receive it directly.
             </p>
           </div>
@@ -999,7 +999,7 @@ export default function ContactPage() {
               <p className="contact-side-copy">
                 Whether you are building a project, looking for
                 collaborators, exploring partnerships, or need help
-                with BuildOne, use the form and tell us what you need.
+                with Aspira, use the form and tell us what you need.
               </p>
 
               <div className="contact-list">
@@ -1187,7 +1187,7 @@ export default function ContactPage() {
 
                 <div className="contact-submit-row">
                   <span className="contact-form-note">
-                    Your message is transferred to the BuildOne
+                    Your message is transferred to the Aspira
                     contact system and stored for follow-up.
                   </span>
 
@@ -1216,7 +1216,7 @@ export default function ContactPage() {
         <div className="contact-container">
           <div className="contact-footer-grid">
             <div>
-              <Link to="/" aria-label="BuildOne home">
+              <Link to="/" aria-label="Aspira home">
                 <Logo />
               </Link>
 
@@ -1274,7 +1274,7 @@ export default function ContactPage() {
               </a>
 
               <a href="mailto:shreyansh.agarwal@zohomail.in">
-                BuildOne Support
+                Aspira Support
               </a>
 
               <a href="mailto:shreyansh.agarwal@zohomail.in">
@@ -1285,11 +1285,11 @@ export default function ContactPage() {
 
           <div className="contact-footer-bottom">
             <div className="contact-footer-tagline">
-              BuildOne
+              Aspira
             </div>
 
             <span>
-              © 2026 BuildOne. All rights reserved.
+              © 2026 Aspira. All rights reserved.
             </span>
           </div>
         </div>

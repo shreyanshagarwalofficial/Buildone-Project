@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 
-const BUILDONE_LOGO =
+const Aspira_LOGO =
   "https://i.pinimg.com/736x/f6/69/e0/f669e0c2756979c96affe047c4eeff12.jpg";
 
 const HERO_IMAGES = [
@@ -132,7 +132,7 @@ function getProfileName(profile, user) {
     user?.user_metadata?.full_name ||
     user?.user_metadata?.name ||
     user?.email?.split("@")[0] ||
-    "BuildOne Member"
+    "Aspira Member"
   );
 }
 
@@ -359,7 +359,7 @@ export default function HomePage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "BuildOne — Home";
+    document.title = "Aspira — Home";
 
     let description = document.querySelector(
       'meta[name="description"]'
@@ -372,7 +372,7 @@ export default function HomePage() {
     }
 
     description.content =
-      "BuildOne workspace for discovering projects, people, opportunities, collaboration and funding.";
+      "Aspira workspace for discovering projects, people, opportunities, collaboration and funding.";
 
     let robots = document.querySelector('meta[name="robots"]');
 
@@ -443,15 +443,17 @@ export default function HomePage() {
         supabase
           .from("projects")
           .select("*")
+          .eq("visibility", "public")
           .order("created_at", { ascending: false })
-          .limit(4),
+          .limit(50),
 
         supabase
           .from("projects")
           .select("id", {
             count: "exact",
             head: true
-          }),
+          })
+          .eq("visibility", "public"),
 
         supabase
           .from("profiles")
@@ -483,6 +485,8 @@ export default function HomePage() {
 
       if (!projectsResult.error) {
         setProjects(projectsResult.data || []);
+      } else {
+        setError(`Projects could not be loaded: ${projectsResult.error.message}`);
       }
 
       setStats({
@@ -583,7 +587,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="buildone-shell">
+    <div className="Aspira-shell">
       <style>{`
         * {
           box-sizing: border-box;
@@ -618,7 +622,7 @@ export default function HomePage() {
           text-decoration: none;
         }
 
-        .buildone-shell {
+        .Aspira-shell {
           min-height: 100vh;
           display: flex;
           background: #f5f5f3;
@@ -1109,8 +1113,9 @@ export default function HomePage() {
 
         .project-grid {
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 18px;
+          max-width: 900px;
         }
 
         .project-card {
@@ -1133,7 +1138,7 @@ export default function HomePage() {
 
         .project-image {
           position: relative;
-          height: 105px;
+          height: 175px;
           overflow: hidden;
           background: #e5e5e2;
         }
@@ -1513,15 +1518,15 @@ export default function HomePage() {
         <Link
           to="/home"
           className="brand"
-          aria-label="BuildOne Home"
+          aria-label="Aspira Home"
         >
           <img
-            src={BUILDONE_LOGO}
-            alt="BuildOne"
+            src={Aspira_LOGO}
+            alt="Aspira"
             className="brand-logo"
           />
 
-          <span className="brand-name">BuildOne</span>
+          <span className="brand-name">Aspira</span>
         </Link>
 
         <nav
@@ -1562,7 +1567,7 @@ export default function HomePage() {
             <span>
               {profile?.role ||
                 profile?.account_type ||
-                "BuildOne Member"}
+                "Aspira Member"}
             </span>
           </div>
         </div>
@@ -1676,12 +1681,12 @@ export default function HomePage() {
                   setSearch(event.target.value)
                 }
                 placeholder="Search projects, skills, services, resources, or opportunities..."
-                aria-label="Search BuildOne"
+                aria-label="Search Aspira"
               />
 
               <button
                 type="submit"
-                aria-label="Search BuildOne"
+                aria-label="Search Aspira"
               >
                 <Icon name="search" size={17} />
               </button>
@@ -1698,7 +1703,7 @@ export default function HomePage() {
 
           <section
             className="stats-grid"
-            aria-label="BuildOne statistics"
+            aria-label="Aspira statistics"
           >
             <StatCard
               icon="projects"
@@ -1790,7 +1795,7 @@ export default function HomePage() {
                   <span>
                     {search.trim()
                       ? "Try another project name, skill, or opportunity."
-                      : "Projects created in BuildOne will appear here automatically."}
+                      : "Projects created in Aspira will appear here automatically."}
                   </span>
                 </div>
               )}

@@ -1,5 +1,6 @@
 ﻿import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import ProjectsManagementPage from "./ProjectsPage.jsx";
 import {
   Activity,
   AlertTriangle,
@@ -234,11 +235,12 @@ function AdminPortal() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const ADMIN_BASE_PATH = "/BuildoneTeam";
+  const ADMIN_BASE_PATH = "/AspiraTeam";
 
-  const section = location.pathname
-    .replace(`${ADMIN_BASE_PATH}/`, "")
-    .split("/")[0] || "dashboard";
+ const section = location.pathname
+  .replace(/^\/AspiraTeam\/?/, "")
+  .split("/")[0]
+  .toLowerCase() || "dashboard";
 
   const [user, setUser] = useState(null);
   const [access, setAccess] = useState(null);
@@ -259,11 +261,16 @@ function AdminPortal() {
       } = await supabase.auth.getUser();
 
       if (userError || !currentUser) {
-        if (mounted) {
-          navigate("/login", { replace: true });
-        }
-        return;
+  if (mounted) {
+    navigate("/login", {
+      replace: true,
+      state: {
+        from: location
       }
+    });
+  }
+  return;
+}
 
       const { data, error } = await supabase.rpc("get_my_admin_access");
 
@@ -290,7 +297,7 @@ function AdminPortal() {
   }, [navigate]);
 
   useEffect(() => {
-    document.title = "BuildOne Admin";
+    document.title = "Aspira Admin";
     document
       .querySelectorAll('meta[name="robots"]')
       .forEach((element) => element.remove());
@@ -331,7 +338,7 @@ function AdminPortal() {
           </div>
           <h1>Access restricted</h1>
           <p>
-            Administrative access is granted only by the BuildOne authorization
+            Administrative access is granted only by the Aspira authorization
             layer.
           </p>
           <button
@@ -339,7 +346,7 @@ function AdminPortal() {
             className="admin-primary-button"
             onClick={() => navigate("/home")}
           >
-            Return to BuildOne
+            Return to Aspira
           </button>
         </div>
       </div>
@@ -1220,7 +1227,7 @@ function AdminPortal() {
       <aside className={`admin-sidebar ${mobileNav ? "open" : ""}`}>
         <div className="admin-brand">
           <div className="admin-brand-mark">B</div>
-          <div className="admin-brand-text">BuildOne Admin</div>
+          <div className="admin-brand-text">Aspira Admin</div>
         </div>
 
         <nav className="admin-nav">
@@ -1323,8 +1330,10 @@ function AdminView({ section, role, permissions, can }) {
   }
 
   if (section === "projects") {
-    return can("manage_projects") ? <ProjectsPage /> : <PermissionDenied />;
-  }
+  return can("manage_projects")
+    ? <ProjectsManagementPage />
+    : <PermissionDenied />;
+}
 
   if (section === "content") {
     return can("manage_content") ? <ContentPage /> : <PermissionDenied />;
@@ -1757,7 +1766,7 @@ function ProjectsPage() {
     <>
       <PageHeader
         title="Projects"
-        description="Review, manage and moderate projects submitted to BuildOne."
+        description="Review, manage and moderate projects submitted to Aspira."
         action={
           <button type="button" className="admin-primary-button">
             <Plus size={13} />
@@ -1945,7 +1954,7 @@ function BlogsPage() {
     <>
       <PageHeader
         title="Blogs"
-        description="Create, edit, publish and optimize BuildOne editorial content."
+        description="Create, edit, publish and optimize Aspira editorial content."
         action={
           <button
             type="button"
@@ -2407,7 +2416,7 @@ function RolesPage({ role }) {
     <>
       <PageHeader
         title="Roles & Permissions"
-        description="Control who can administer BuildOne and which administrative capabilities they receive."
+        description="Control who can administer Aspira and which administrative capabilities they receive."
       />
 
       {role !== "super_admin" && (
@@ -2763,7 +2772,7 @@ function CareersPage() {
 
 function SettingsPage() {
   const [settings, setSettings] = useState({
-    platform_name: "BuildOne",
+    platform_name: "Aspira",
     support_email: "",
     timezone: "Asia/Kolkata",
     default_language: "English"

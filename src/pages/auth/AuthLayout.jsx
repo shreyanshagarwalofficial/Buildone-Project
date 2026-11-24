@@ -15,7 +15,7 @@ function Logo() {
         <i />
         <i />
       </span>
-      <span>BuildOne</span>
+      <span>Aspira</span>
     </span>
   );
 }
@@ -715,9 +715,9 @@ export default function AuthLayout({
       <div className="auth-page">
         <main className="auth-shell">
           {register && (
-            <section className="auth-intro" aria-label="BuildOne introduction">
+            <section className="auth-intro" aria-label="Aspira introduction">
               <div className="auth-intro-top">
-                <Link to="/" aria-label="BuildOne home">
+                <Link to="/" aria-label="Aspira home">
                   <Logo />
                 </Link>
 
@@ -773,7 +773,7 @@ export default function AuthLayout({
                 Back to home
               </Link>
 
-              <Link to="/" aria-label="BuildOne home">
+              <Link to="/" aria-label="Aspira home">
                 <Logo />
               </Link>
             </header>
@@ -786,7 +786,7 @@ export default function AuthLayout({
             </div>
           </section>
 
-          <aside className="auth-photo" aria-label="BuildOne workspace">
+          <aside className="auth-photo" aria-label="Aspira workspace">
             <div className="auth-photo-copy">
               <strong>
                 PEOPLE

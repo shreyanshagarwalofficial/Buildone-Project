@@ -197,12 +197,12 @@ function setCanonical(url) {
 
 function setSchema(schema) {
   let element = document.getElementById(
-    "buildone-career-schema"
+    "Aspira-career-schema"
   );
 
   if (!element) {
     element = document.createElement("script");
-    element.id = "buildone-career-schema";
+    element.id = "Aspira-career-schema";
     element.type = "application/ld+json";
     document.head.appendChild(element);
   }
@@ -215,7 +215,7 @@ function Header() {
     <header className="career-header">
       <div className="career-header-inner">
         <Link to="/" className="career-logo">
-          <img src={LOGO_URL} alt="BuildOne" />
+          <img src={LOGO_URL} alt="Aspira" />
         </Link>
 
         <nav className="career-nav">
@@ -263,7 +263,7 @@ function JobCard({ job, count, onOpen }) {
 
           <div className="job-card-meta">
             <Meta icon="briefcase">
-              {job.department || "BuildOne"}
+              {job.department || "Aspira"}
             </Meta>
 
             <Meta icon="globe">
@@ -284,7 +284,7 @@ function JobCard({ job, count, onOpen }) {
           <p>
             {job.short_description ||
               job.description ||
-              "Join BuildOne and contribute to the platform."}
+              "Join Aspira and contribute to the platform."}
           </p>
 
           <div className="job-card-bottom">
@@ -435,7 +435,7 @@ function ApplicationModal({
             <span>APPLICATION</span>
             <h2>{job.title}</h2>
             <p>
-              {job.department || "BuildOne"} ·{" "}
+              {job.department || "Aspira"} ·{" "}
               {job.workplace_type || "Remote"} ·{" "}
               {job.employment_type || "Full-time"}
             </p>
@@ -756,7 +756,7 @@ export default function CareersPage() {
 
     jobs.forEach((job, index) => {
       const callback =
-        `buildOneCareerCount_${Date.now()}_${index}`;
+        `AspiraCareerCount_${Date.now()}_${index}`;
 
       const script =
         document.createElement("script");
@@ -850,16 +850,16 @@ export default function CareersPage() {
 
   useEffect(() => {
     const title = selectedJob
-      ? `${selectedJob.title} | BuildOne Careers`
-      : "Careers | BuildOne";
+      ? `${selectedJob.title} | Aspira Careers`
+      : "Careers | Aspira";
 
     const description = selectedJob
       ? clean(
           selectedJob.short_description ||
             selectedJob.description ||
-            `Apply for ${selectedJob.title} at BuildOne.`
+            `Apply for ${selectedJob.title} at Aspira.`
         ).slice(0, 155)
-      : "Explore current career opportunities at BuildOne.";
+      : "Explore current career opportunities at Aspira.";
 
     const path = selectedJob
       ? `/careers/${selectedJob.slug}`
@@ -904,7 +904,7 @@ export default function CareersPage() {
           selectedJob.employment_type || "FULL_TIME",
         hiringOrganization: {
           "@type": "Organization",
-          name: "BuildOne",
+          name: "Aspira",
           url: window.location.origin
         }
       });
@@ -912,7 +912,7 @@ export default function CareersPage() {
       setSchema({
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "BuildOne",
+        name: "Aspira",
         url: window.location.origin
       });
     }
@@ -1677,7 +1677,7 @@ export default function CareersPage() {
               </h1>
 
               <p>
-                Join BuildOne and contribute to a
+                Join Aspira and contribute to a
                 platform designed around projects,
                 capabilities, collaboration and
                 opportunities.
@@ -1722,10 +1722,10 @@ export default function CareersPage() {
                 </div>
 
                 <p>
-                  Explore current BuildOne
+                  Explore current Aspira
                   opportunities. Positions shown
                   here are published from the
-                  BuildOne Team careers system.
+                  Aspira Team careers system.
                 </p>
               </div>
 
@@ -1804,7 +1804,7 @@ export default function CareersPage() {
                 </Link>
 
                 <p className="careers-heading-label">
-                  {selectedJob.department || "BUILDONE"}
+                  {selectedJob.department || "Aspira"}
                 </p>
 
                 <h2>
@@ -1830,7 +1830,7 @@ export default function CareersPage() {
                 <p className="job-detail-intro">
                   {selectedJob.description ||
                     selectedJob.short_description ||
-                    "BuildOne is looking for a contributor for this position."}
+                    "Aspira is looking for a contributor for this position."}
                 </p>
 
                 {responsibilities.length > 0 && (
@@ -1871,7 +1871,7 @@ export default function CareersPage() {
 
                 {benefits.length > 0 && (
                   <div className="detail-section">
-                    <h3>What BuildOne provides</h3>
+                    <h3>What Aspira provides</h3>
 
                     <ul>
                       {benefits.map((item) => (
@@ -1890,7 +1890,7 @@ export default function CareersPage() {
                 <div className="sidebar-item">
                   <span>Department</span>
                   <strong>
-                    {selectedJob.department || "BuildOne"}
+                    {selectedJob.department || "Aspira"}
                   </strong>
                 </div>
 
@@ -1957,7 +1957,7 @@ export default function CareersPage() {
       <footer className="careers-footer">
         <div className="careers-footer-inner">
           <span>
-            © 2026 BuildOne. All rights reserved.
+            © 2026 Aspira. All rights reserved.
           </span>
 
           <div style={{ display: "flex", gap: 18 }}>

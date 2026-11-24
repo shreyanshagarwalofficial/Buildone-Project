@@ -37,10 +37,10 @@ function GoogleMark() {
 }
 
 function setSeo() {
-  document.title = "Create Your Account | BuildOne";
+  document.title = "Create Your Account | Aspira";
 
   const description =
-    "Create a BuildOne account to discover projects, connect with people, collaborate and build meaningful work.";
+    "Create a Aspira account to discover projects, connect with people, collaborate and build meaningful work.";
 
   let meta = document.querySelector('meta[name="description"]');
 
@@ -88,21 +88,27 @@ export default function RegisterPage() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    setSeo();
+useEffect(() => {
+  setSeo();
 
-    let active = true;
+  let active = true;
 
-    supabase.auth.getUser().then(({ data }) => {
-      if (active && data.user) {
-        navigate("/", { replace: true });
-      }
-    });
+  async function checkSession() {
+    const { data, error } = await supabase.auth.getUser();
 
-    return () => {
-      active = false;
-    };
-  }, [navigate]);
+    if (!active || error) return;
+
+    if (data.user) {
+      navigate("/home", { replace: true });
+    }
+  }
+
+  checkSession();
+
+  return () => {
+    active = false;
+  };
+}, [navigate]);
 
   function updateField(event) {
     setForm((current) => ({
@@ -199,7 +205,7 @@ export default function RegisterPage() {
           what’s next.
         </>
       }
-      description="Whether you’re a builder, creator, investor or someone ready to contribute, BuildOne gives you a place to start."
+      description="Whether you’re a builder, creator, investor or someone ready to contribute, Aspira gives you a place to start."
     >
       <form className="auth-form" onSubmit={handleSubmit} noValidate>
         {error && <div className="auth-message auth-error">{error}</div>}

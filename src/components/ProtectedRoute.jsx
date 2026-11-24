@@ -1,29 +1,53 @@
-﻿import { useEffect, useState } from "react";
+﻿
+import { useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 
 function ProtectedRoute({ children }) {
   const location = useLocation();
+
   const [state, setState] = useState({
     loading: true,
-    user: null
+    user: null,
+    error: null
   });
 
   useEffect(() => {
     let mounted = true;
 
-    const loadUser = async () => {
-      const {
-        data: { user }
-      } = await supabase.auth.getUser();
+    async function loadUser() {
+      try {
+        const {
+          data: { user },
+          error
+        } = await supabase.auth.getUser();
 
-      if (mounted) {
+        if (!mounted) return;
+
+        if (error) {
+          setState({
+            loading: false,
+            user: null,
+            error: error.message
+          });
+          return;
+        }
+
         setState({
           loading: false,
-          user
+          user: user ?? null,
+          error: null
+        });
+      } catch (error) {
+        if (!mounted) return;
+
+        setState({
+          loading: false,
+          user: null,
+          error: error.message || "Authentication failed."
         });
       }
-    };
+    }
 
     loadUser();
 
@@ -34,7 +58,8 @@ function ProtectedRoute({ children }) {
 
       setState({
         loading: false,
-        user: session?.user ?? null
+        user: session?.user ?? null,
+        error: null
       });
     });
 

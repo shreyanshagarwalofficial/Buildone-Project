@@ -100,7 +100,7 @@ function Logo() {
         <i />
         <i />
       </span>
-      <span>BuildOne</span>
+      <span>Aspira</span>
     </span>
   );
 }
@@ -1360,7 +1360,7 @@ export default function LandingPage() {
 
       <header className="header">
         <div className="container header-inner">
-          <a href="/" aria-label="BuildOne home">
+          <a href="/" aria-label="Aspira home">
             <Logo />
           </a>
 
@@ -1374,24 +1374,24 @@ export default function LandingPage() {
           </nav>
 
           <div className="header-tools">
-            <label className="search">
-              <Icon type="search" size={15} />
-              <input
-                type="search"
-                placeholder="Search projects, skills, or opportunities..."
-                aria-label="Search projects, skills, or opportunities"
-              />
-            </label>
+  <label className="search">
+    <Icon type="search" size={15} />
+    <input
+      type="search"
+      placeholder="Search projects, skills, or opportunities..."
+      aria-label="Search projects, skills, or opportunities"
+    />
+  </label>
 
-            <a href="/login" className="login">
-              Log in
-            </a>
+  <a href="/login" className="login">
+    Log in
+  </a>
 
-            <a href="/register" className="button button-black">
-              Get Started
-              <Arrow size={13} />
-            </a>
-          </div>
+  <a href="/register" className="button button-black">
+    Get Started
+    <Arrow size={13} />
+  </a>
+</div>
         </div>
       </header>
 
@@ -1488,7 +1488,7 @@ export default function LandingPage() {
 
         <section
           className="stats"
-          aria-label="BuildOne platform highlights"
+          aria-label="Aspira platform highlights"
         >
           <div className="container stats-grid">
             <div className="stat">
@@ -1740,12 +1740,12 @@ export default function LandingPage() {
                   <img
                     className="testimonial-image"
                     src={people[0]}
-                    alt="BuildOne community member"
+                    alt="Aspira community member"
                     loading="lazy"
                   />
 
                   <blockquote className="testimonial-quote">
-                    “BuildOne Idea is Best I support the Team BuildOne for future Development also”
+                    “Aspira Idea is Best I support the Team Aspira for future Development also”
                   </blockquote>
                 </div>
 
@@ -1765,7 +1765,7 @@ export default function LandingPage() {
                   <img
                     className="testimonial-image"
                     src={people[1]}
-                    alt="BuildOne community member"
+                    alt="Aspira community member"
                     loading="lazy"
                   />
 
@@ -1834,7 +1834,7 @@ export default function LandingPage() {
         <div className="container">
           <div className="footer-grid">
             <div>
-              <a href="/" aria-label="BuildOne home">
+              <a href="/" aria-label="Aspira home">
                 <Logo />
               </a>
 
@@ -1863,7 +1863,7 @@ export default function LandingPage() {
                 Support
               </h3>
 
-              <a href="/help">Help Center</a>
+              <a href="/help-center">Help Center</a>
               <a href="/contact">Contact Us</a>
               <a href="/safety">Safety</a>
               <a href="/guidelines">Community Guidelines</a>
@@ -1914,7 +1914,7 @@ export default function LandingPage() {
               <label className="consent">
                 <input type="checkbox" />
                 <span>
-                  I agree to receive updates from BuildOne.
+                  I agree to receive updates from Aspira.
                 </span>
               </label>
             </div>
@@ -1926,7 +1926,7 @@ export default function LandingPage() {
             </div>
 
             <span>
-              © 2026 BuildOne. All rights reserved.
+              © 2026 Aspira. All rights reserved.
             </span>
           </div>
         </div>

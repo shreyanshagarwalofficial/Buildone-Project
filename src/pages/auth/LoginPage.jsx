@@ -1,7 +1,8 @@
 ﻿import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import AuthLayout from "./AuthLayout.jsx";
 import { supabase } from "../../lib/supabase.js";
+
 
 function Eye({ open }) {
   return (
@@ -37,10 +38,10 @@ function GoogleMark() {
 }
 
 function setSeo() {
-  document.title = "Log In | BuildOne";
+  document.title = "Log In | Aspira";
 
   const description =
-    "Log in to your BuildOne account to manage projects, collaborate and connect with opportunities.";
+    "Log in to your Aspira account to manage projects, collaborate and connect with opportunities.";
 
   let meta = document.querySelector('meta[name="description"]');
 
@@ -87,27 +88,27 @@ export default function LoginPage() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    setSeo();
+useEffect(() => {
+  setSeo();
 
-    let active = true;
+  let active = true;
 
-    const checkSession = async () => {
-      const {
-        data: { user }
-      } = await supabase.auth.getUser();
+  async function clearPreviousSession() {
+    const { error } = await supabase.auth.signOut({
+      scope: "local"
+    });
 
-      if (active && user) {
-        navigate("/home", { replace: true });
-      }
-    };
+    if (active && error) {
+      setError("Unable to clear the previous login session.");
+    }
+  }
 
-    checkSession();
+  clearPreviousSession();
 
-    return () => {
-      active = false;
-    };
-  }, [navigate]);
+  return () => {
+    active = false;
+  };
+}, []);
 
   async function handleSubmit(event) {
     event.preventDefault();

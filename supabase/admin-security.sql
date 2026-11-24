@@ -40,7 +40,7 @@ create table if not exists public.security_events (
 
 create table if not exists public.platform_settings (
   id integer primary key,
-  platform_name text not null default 'BuildOne',
+  platform_name text not null default 'Aspira',
   support_email text,
   timezone text not null default 'Asia/Kolkata',
   default_language text not null default 'English',
